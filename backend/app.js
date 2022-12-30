@@ -6,7 +6,6 @@ const url="mongodb://127.0.0.1:27017/Multer"
 const path=require('path')
 const imgschema=require('./schema')
 const fs =require("fs")
-// const { findByIdAndDelete } = require("./schema")
 const app=express();
 app.use(express.json())
 app.use(cors())
@@ -49,8 +48,6 @@ app.get('/:id', async (req,res)=>{
     const data= await imgschema.findById(req.params.id)
     res.json(data)
 })
-
-
 app.delete('/:id',async(req,res)=>{
        const del= await imgschema.findByIdAndDelete(req.params.id)
        fs.unlink(del.path,((err)=>{
@@ -71,9 +68,7 @@ app.put('/:id',upload.single('file'),async(req,res)=>{
         }else{
             console.log('updated');
         }
-
-
-    }))
+ }))
     const edit= await imgschema.findByIdAndUpdate(req.params.id)
             edit.name    =req.body.name,
             edit.email   =req.body.email,

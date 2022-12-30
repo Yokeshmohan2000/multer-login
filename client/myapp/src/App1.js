@@ -3,8 +3,6 @@ import { Routes,Route } from 'react-router-dom'
 import Edit from './Edit'
 import App from './App'
 
-
-
 function App1() {
   return (
     <div>
